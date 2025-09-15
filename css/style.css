@@ -1,0 +1,64 @@
+*{box-sizing:border-box}
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f8;
+    margin:0;
+    padding:0;
+    color:#222
+}
+.center-card {
+    max-width:420px;
+    margin:6vh auto;
+    background:#fff;
+    padding:1.6rem;
+    border-radius:8px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08)
+}
+.container {
+    max-width:1000px;
+    margin:2rem auto;
+    background:#fff;
+    padding:1.2rem;
+    border-radius:8px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.05)
+}
+h1, h2{
+    margin:0 0 12px 0
+}
+label{
+    display:block;
+    margin-bottom:10px;
+    font-size:14px
+}
+input[type=text],input[type=password],input[type=month],select{width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:6px}
+button{
+    background:#007bff;
+    color:#fff;
+    border:none;
+    padding:10px 14px;
+    border-radius:6px;
+    cursor:pointer
+}
+button:hover{
+    opacity:0.95
+}
+.table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:12px
+}
+.table th,.table td{
+    border:1px solid #e6e6e6;
+    padding:8px;
+    text-align:left
+}
+.error{
+    color:#b00;
+    background:#ffdede;
+    padding:8px;
+    border-radius:6px
+}
+@media(max-width:600px){
+    .center-card{margin:3vh 12px;padding:1rem}
+    .container{margin:12px}
+}
