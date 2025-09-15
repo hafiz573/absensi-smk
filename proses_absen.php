@@ -14,6 +14,14 @@ if (isset($_POST['hadir']) && isset($_POST['siswa_id']) && $_SESSION['role']==='
     $tanggal = date('Y-m-d');
     $jam_masuk = date('H:i:s');
 
+    // cek siswa_id valid
+    $cekSiswa = $koneksi->prepare('SELECT COUNT(*) FROM siswa WHERE id=:sid');
+    $cekSiswa->execute([':sid'=>$siswa_id]);
+    if ($cekSiswa->fetchColumn() == 0) {
+        echo 'Siswa tidak ditemukan. <a href="siswa.php">Kembali</a>';
+        exit;
+    }
+
     // cek sudah absen
     $stmt = $koneksi->prepare('SELECT COUNT(*) FROM absensi WHERE siswa_id=:sid AND tanggal=:tgl');
     $stmt->execute([':sid'=>$siswa_id, ':tgl'=>$tanggal]);
