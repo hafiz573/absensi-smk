@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Jakarta'); // Tambahkan ini di baris paling atas
 require 'koneksi.php';
 if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'siswa' && $_SESSION['role'] !== 'guru')) {
     header('Location: index.php'); exit;
@@ -26,13 +27,14 @@ if (isset($_POST['hadir']) && isset($_POST['siswa_id']) && $_SESSION['role']==='
     $stmt = $koneksi->prepare('SELECT COUNT(*) FROM absensi WHERE siswa_id=:sid AND tanggal=:tgl');
     $stmt->execute([':sid'=>$siswa_id, ':tgl'=>$tanggal]);
     if ($stmt->fetchColumn() > 0) {
-        echo 'Anda sudah melakukan absensi hari ini. <a href="siswa.php">Kembali</a>';
+        header("refresh:1;url=siswa.php");
         exit;
     }
 
     $ins = $koneksi->prepare('INSERT INTO absensi (siswa_id,tanggal,jam_masuk,status) VALUES (:sid,:tgl,:jam,:st)');
     $ins->execute([':sid'=>$siswa_id, ':tgl'=>$tanggal, ':jam'=>$jam_masuk, ':st'=>'hadir']);
-    echo 'Absensi berhasil dicatat. <a href="siswa.php">Kembali</a>';
+    // echo 'Absensi berhasil dicatat. <a href="siswa.php">Kembali</a>';
+    header("refresh:1;url=siswa.php");
     exit;
 }
 
@@ -55,4 +57,5 @@ if ($_SESSION['role'] === 'guru' && isset($_POST['siswa_id']) && is_array($_POST
     exit;
 }
 
+// (Sudah absensi harian, tidak perlu diubah)
 header('Location: index.php');

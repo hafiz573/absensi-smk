@@ -65,7 +65,7 @@ if ($selected_kelas) {
     <?php endif; ?>
 
     <hr>
-    <h3>Rekap Absensi Bulanan</h3>
+    <h3>Rekap Absensi Harian</h3>
     <form action="rekap_pdf.php" method="GET" target="_blank">
         <label>Pilih Kelas:
             <select name="kelas_id">
@@ -74,7 +74,7 @@ if ($selected_kelas) {
                 <?php endforeach; ?>
             </select>
         </label>
-        <label>Pilih Bulan:<input type="month" name="bulan" required></label>
+        <label>Pilih Tanggal:<input type="date" name="tanggal" required></label>
         <button type="submit">Cetak PDF</button>
     </form>
 

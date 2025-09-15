@@ -17,7 +17,8 @@ class PDF extends FPDF {
         $this->Cell(0,10,'Rekap Absensi Siswa',0,1,'C');
         $this->SetFont('Arial','',10);
         $txt = 'Bulan: '.namaBulan((int)$bulan).' '.$tahun;
-        if (!empty($kelas_nama)) $txt = $txt . ' | Kelas: ' . $kelas_nama;
+        $txt .= ' | Tanggal: '.date('d-m-Y');
+        if (!empty($kelas_nama)) $txt .= ' | Kelas: ' . $kelas_nama;
         $this->Cell(0,8, $txt,0,1,'C');
         $this->Ln(3);
         $this->SetFont('Arial','B',8);
